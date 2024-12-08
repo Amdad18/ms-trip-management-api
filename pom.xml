@@ -37,6 +37,10 @@
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</exclude>
+						<exclude>
+							<groupId>javax.json</groupId>
+							<artifactId>javax.json-api</artifactId>
+						</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -47,14 +51,6 @@
 
 		</plugins>
 	</build>
-
-
-	<dependencyManagement>
-		<dependencies>
-
-	
-		</dependencies>
-	</dependencyManagement>
 
 	<dependencies>
 
@@ -74,10 +70,13 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-multipart</artifactId>
-		</dependency>
+			<!--
+			https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-multipart -->
+			<dependency>
+				<groupId>org.glassfish.jersey.media</groupId>
+				<artifactId>jersey-media-multipart</artifactId>
+				<version>3.1.0</version>
+			</dependency>
 
 		<dependency>
 			<groupId>javax.inject</groupId>
@@ -173,6 +172,13 @@
 			<version>1.4.2.Final</version>
 			<scope>compile</scope>
 		</dependency>
+		
+			<!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+			<dependency>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>5.1.0</version>
+			</dependency>
 		
 	</dependencies>
 

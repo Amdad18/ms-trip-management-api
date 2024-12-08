@@ -11,12 +11,16 @@ import lombok.extern.slf4j.Slf4j;
  */
 @SpringBootApplication
 @ComponentScan({
-	"org.devp.restaurant.model",
-	"org.devp.restaurant.dto", 
-	"org.devp.restaurant.api.util",
-	"org.devp.restaurant.api.repository",
-	"org.devp.restaurant.api.repository.impl",
-	"org.devp.restaurant.api.controller"
+	"org.devp.trip.model",
+	"org.devp.trip.api.dto", 
+	"org.devp.trip.api.util",
+	"org.devp.trip.api.repository",
+	"org.devp.trip.api.repository.impl",
+	"org.devp.trip.api.cache",
+	"org.devp.trip.api.shared",
+	"org.devp.trip.api.validation",
+	"org.devp.trip.api.controller",
+	"org.devp.trip.api",
 })
 @Slf4j
 public class TripApiApplication{

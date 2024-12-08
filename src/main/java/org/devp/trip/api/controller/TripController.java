@@ -3,11 +3,14 @@ package org.devp.trip.api.controller;
 import java.math.BigInteger;
 import java.util.Optional;
 
+import javax.inject.Singleton;
+
 import org.apache.http.HttpStatus;
 import org.devp.trip.api.dto.TripDto;
 import org.devp.trip.api.dto.TripRequestDto;
 import org.devp.trip.api.repository.TripRepository;
 import org.devp.trip.api.shared.BasicCacheUserPrincipal;
+import org.devp.trip.api.shared.Secured;
 import org.devp.trip.api.validation.TripAPIValidationResponse;
 import org.devp.trip.api.validation.TripAPIValidator;
 import org.json.JSONObject;
@@ -25,9 +28,11 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.core.UriInfo;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -37,7 +42,14 @@ import lombok.extern.slf4j.Slf4j;
 @Path("trip")
 @Slf4j
 @Component
+@Singleton
 public class TripController {
+	
+	@Context
+	private UriInfo info;
+	
+	@Context
+	private HttpHeaders httpHeaders;
 
 	@Context
 	private HttpServletRequest servletRequest;
@@ -51,6 +63,7 @@ public class TripController {
 	@Inject
 	private TripAPIValidator paramValidator;
 	
+	@Secured
 	@POST
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -97,6 +110,7 @@ public class TripController {
 		return Response.status(HttpStatus.SC_OK).entity(response.toString()).build();
 	}
 	
+	@Secured
 	@PUT
 	@Path("/status/change")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -134,6 +148,7 @@ public class TripController {
 		return Response.status(HttpStatus.SC_OK).entity(response.toString()).build();
 	}
 	
+	@Secured
 	@PUT
 	@Path("/transporter/assign")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -171,6 +186,7 @@ public class TripController {
 		return Response.status(HttpStatus.SC_OK).entity(response.toString()).build();
 	}
 	
+	@Secured
 	@GET
 	@Path("/details")
 	@Produces(MediaType.APPLICATION_JSON)

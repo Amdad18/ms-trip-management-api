@@ -71,7 +71,7 @@ public final class ConnectionUtil {
 		HikariConfig config = new HikariConfig();
 		config.setJdbcUrl(buildMasterJdbcUrl());
 		config.setUsername("root");
-		config.setPassword("admin");
+		config.setPassword("Admin@123");
 		config.setPoolName("trip_management_db_master_pool");
 		
 		config.setConnectionTimeout(300000);
